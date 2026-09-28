@@ -8,7 +8,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/*.png'],
       manifest: {
-        id: './',
+        id: '/kitchen-timer/',
         name: 'キッチンタイマー',
         short_name: 'タイマー',
         description:
