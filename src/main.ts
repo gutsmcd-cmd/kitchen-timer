@@ -90,6 +90,7 @@ function syncAlarm() {
     stopAlarm();
     if (vibLoop) { clearInterval(vibLoop); vibLoop = 0; navigator.vibrate?.(0); }
   }
+  document.body.classList.toggle('ringing', ringing);
   const running = st.timers.some((x) => x.state === 'running') || !!st.watch.startAt || ringing;
   setWakeLock(running);
   document.title = ringing ? `⏰ ${t.done}` : t.app;

@@ -70,3 +70,36 @@ main { padding-bottom: calc(86px + var(--safe-b)); }
 .tab[aria-pressed='true'] { color: var(--acc); }
 .tab[aria-pressed='true'] .tab-ic { background: color-mix(in srgb, var(--acc) 14%, transparent); }
 .awake { flex-basis: 100%; margin: 0; }
+
+/* Shirley check (Oct 2026): larger text and 48px tap targets for older eyes and fingers. */
+.lang-toggle { font-size: 1rem; }
+.lang-toggle button { min-height: 48px; min-width: 48px; padding: 0 12px; opacity: 1; }
+.icon-btn { width: 48px; height: 48px; }
+label.field, .small, .foot { font-size: 1rem; }
+.seg button { min-height: 48px; font-size: 1rem; color: #55555f; }
+@media (prefers-color-scheme: dark) { .seg button { color: var(--muted); } }
+.btn, .input, select.input { min-height: 48px; }
+.toast button { min-height: 48px; }
+:root { --acc: #c2410c; }
+.preset span, .mini, .t-total, .pill, .tab, .lap-n em { font-size: 1rem; }
+.mini { min-height: 48px; padding: 0 14px; }
+.t-name { font-size: 1.05rem; min-height: 48px; }
+.icon-btn.sm { width: 48px; height: 48px; }
+.pill { height: 48px; color: color-mix(in srgb, var(--acc) 85%, #000); }
+.timer.done .round, .timer.done .pill { background: rgba(0, 0, 0, 0.22); }
+.switch { min-height: 48px; }
+.switch input { width: 28px; height: 28px; }
+.wbtn.go { background: #15803d; }
+@media (prefers-color-scheme: dark) {
+  .preset b, .pill, .tab[aria-pressed='true'], .laps .worst .lap-t, .laps .worst em { color: #fb923c; }
+}
+/* Visual alarm: the whole screen flashes while a timer is ringing, so it works without sound. */
+body.ringing { animation: ring-flash 1s step-end infinite; }
+@keyframes ring-flash { 0% { background: var(--bg); } 50% { background: var(--acc); } }
+@media (prefers-reduced-motion: reduce) {
+  body.ringing { animation: none; background: color-mix(in srgb, var(--acc) 35%, var(--bg)); }
+}
+body.ringing .foot, body.ringing .recent .muted { animation: ring-ink 1s step-end infinite; }
+@keyframes ring-ink { 0% { color: var(--muted); } 50% { color: #fff; } }
+@media (prefers-reduced-motion: reduce) { body.ringing .foot, body.ringing .recent .muted { animation: none; color: var(--ink); } }
+body.ringing .big-stop, body.ringing .timer.done { outline: 3px solid #fff; outline-offset: 0; }
