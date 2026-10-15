@@ -71,19 +71,28 @@ main { padding-bottom: calc(86px + var(--safe-b)); }
 .tab[aria-pressed='true'] .tab-ic { background: color-mix(in srgb, var(--acc) 14%, transparent); }
 .awake { flex-basis: 100%; margin: 0; }
 
-/* Shirley check (Oct 2026): larger text and 48px tap targets for older eyes and fingers. */
-.lang-toggle { font-size: 1rem; }
-.lang-toggle button { min-height: 48px; min-width: 48px; padding: 0 12px; opacity: 1; }
+/* Shirley check (Oct 2026): AA contrast and 48px tap targets. Bigger text is opt-in via 大きい文字 (html.big-text). */
+.lang-toggle button { min-height: 48px; min-width: 48px; padding: 0 6px; opacity: 1; }
 .icon-btn { width: 48px; height: 48px; }
-label.field, .small, .foot { font-size: 1rem; }
-.seg button { min-height: 48px; font-size: 1rem; color: #55555f; }
+.seg button { min-height: 48px; color: #55555f; }
 @media (prefers-color-scheme: dark) { .seg button { color: var(--muted); } }
 .btn, .input, select.input { min-height: 48px; }
 .toast button { min-height: 48px; }
+
+/* 大きい文字 / Large text switch */
+.top-tools { display: flex; align-items: center; gap: 4px; flex: none; }
+.big-text-btn {
+  min-width: 48px; min-height: 48px; padding: 0 8px; border-radius: 999px; flex: none;
+  border: 1.5px solid currentColor; background: transparent; color: inherit;
+  display: inline-flex; align-items: center; justify-content: center; gap: 1px; font-weight: 800; line-height: 1;
+}
+.big-text-btn .bt-s { font-size: 12px; margin-top: 5px; }
+.big-text-btn .bt-l { font-size: 19px; }
+.big-text-btn[aria-pressed='true'] { background: var(--acc-ink, #fff); color: var(--acc); }
+
 :root { --acc: #c2410c; }
-.preset span, .mini, .t-total, .pill, .tab, .lap-n em { font-size: 1rem; }
 .mini { min-height: 48px; padding: 0 14px; }
-.t-name { font-size: 1.05rem; min-height: 48px; }
+.t-name { min-height: 48px; }
 .icon-btn.sm { width: 48px; height: 48px; }
 .pill { height: 48px; color: color-mix(in srgb, var(--acc) 85%, #000); }
 .timer.done .round, .timer.done .pill { background: rgba(0, 0, 0, 0.22); }
@@ -103,3 +112,11 @@ body.ringing .foot, body.ringing .recent .muted { animation: ring-ink 1s step-en
 @keyframes ring-ink { 0% { color: var(--muted); } 50% { color: #fff; } }
 @media (prefers-reduced-motion: reduce) { body.ringing .foot, body.ringing .recent .muted { animation: none; color: var(--ink); } }
 body.ringing .big-stop, body.ringing .timer.done { outline: 3px solid #fff; outline-offset: 0; }
+.topbar h1 { min-width: 0; }
+
+html.big-text { font-size: 112.5%; }
+html.big-text .lang-toggle, html.big-text label.field, html.big-text .small, html.big-text .foot, html.big-text .seg button { font-size: 1rem; }
+
+html.big-text .preset span, html.big-text .mini, html.big-text .t-total, html.big-text .pill, html.big-text .tab, html.big-text .lap-n em { font-size: 1rem; }
+html.big-text .t-name { font-size: 1.05rem; }
+html.big-text .topbar h1 { font-size: 18px; }
